@@ -1,0 +1,28 @@
+body {
+    background-color: #333333;
+}
+@font-face {
+  font-family: 'CathaySansLt';
+  src: url('/assets/fonts/Cathay Sans/CathaySans_Lt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Exo-ExtraLight';
+  src: url('/assets/fonts/Exo/Exo-ExtraLight.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Exo-Regular';
+  src: url('/assets/fonts/Exo/Exo-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Exo-Medium';
+  src: url('/assets/fonts/Exo/Exo-Medium.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
