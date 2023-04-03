@@ -1,9 +1,16 @@
 body {
     background-color: #333333;
 }
+
 @font-face {
   font-family: 'CathaySansLt';
   src: url('/assets/fonts/Cathay Sans/CathaySans_Lt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CathaySansMd';
+  src: url('/assets/fonts/Cathay Sans/CathaySans_Md.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

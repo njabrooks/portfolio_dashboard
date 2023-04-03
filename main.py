@@ -4,8 +4,7 @@ from datetime import datetime
 from dash import dash, html, dcc, dash_table, Input, Output
 from dash.dash_table import FormatTemplate
 import plotly.express as px
-from config import summary_folder
-
+from config import summary_folder, font_style1, font_style2
 
 # Read and combine CSV files
 csv_files = [f for f in os.listdir(summary_folder) if f.endswith(".csv")]
@@ -55,21 +54,21 @@ app.layout = html.Div(
     children=[
         # Header
         html.H1("Portfolio Dashboard", style={"textAlign": "center", "color": "white",
-            "font-family": "Exo-ExtraLight", "fontWeight": "normal", "fontSize": "2.5rem", "margin-top": "20px"}),
+            "font-family": font_style1, "fontWeight": "normal", "fontSize": "2.5rem", "margin-top": "20px"}),
 
         # Checklists
         html.Div(
             [
                 html.Div(
                     [
-                        html.Label("Type:", style={"color": "white", "font-family": "Exo-Regular",
-                                                   "font-size": "1.5rem"}),
+                        html.Label("Type:", style={"color": "white", "font-family": font_style2,
+                                                   "font-size": "1.25rem"}),
                         dcc.Checklist(
                             id="type-checklist",
                             options=[{"label": t, "value": t} for t in combined_df["Type"].unique()],
                             value=combined_df["Type"].unique(),
                             inline=True,
-                            labelStyle={"color": "white", "font-family": "Exo-Regular", "margin-top": "9px",
+                            labelStyle={"color": "white", "font-family": font_style1, "margin-top": "5px",
                                         "margin-left": "18px"},
                         ),
                     ],
@@ -77,14 +76,14 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     [
-                        html.Label("Owner:", style={"color": "white", "font-family": "Exo-Regular",
-                                                    "display": "inline-block", "font-size": "1.5rem"}),
+                        html.Label("Owner:", style={"color": "white", "font-family": font_style2,
+                                                    "font-size": "1.25rem"}),
                         dcc.Checklist(
                             id="owner-checklist",
                             options=[{"label": o, "value": o} for o in combined_df["Owner"].unique()],
                             value=combined_df["Owner"].unique(),
                             inline=True,
-                            labelStyle={"color": "white", "font-family": "Exo-Regular", "margin-top": "9px",
+                            labelStyle={"color": "white", "font-family": font_style1, "margin-top": "5px",
                                         "margin-left": "18px"},
                         ),
                     ],
@@ -118,6 +117,7 @@ app.layout = html.Div(
                         "backgroundColor": "#333333",
                         "color": "white",
                         "fontSize": "1.1rem",
+                        "fontFamily": font_style2,
                     },
                     sort_action="native",
                     sort_mode="single",
@@ -134,7 +134,7 @@ app.layout = html.Div(
                         },
                         {
                             "if": {"filter_query": "{Type} = 'Total'"},
-                            "fontWeight": "bold",
+                            "fontFamily": font_style2,
                             "backgroundColor": "#007BFF"
                         },
                     ],
@@ -142,7 +142,9 @@ app.layout = html.Div(
                         "backgroundColor": "#444444",
                         "color": "white",
                         "textAlign": "left",
-                        "fontFamily": "Exo-Regular",
+                        "fontFamily": font_style1,
+                        "padding-left": "8px",
+                        "padding-right": "8px",
                     },
                     style_cell_conditional=[
                         {"if": {"column_id": "USD Value"}, "textAlign": "right"},
@@ -158,13 +160,13 @@ app.layout = html.Div(
         # Latest data text
         html.Div(
             [html.Small(id="latest-data-text", children="Latest data: {}".format(combined_df["Datetime"].max()),
-                        style={"float": "right", "color": "white"},
+                        style={"float": "left", "color": "white"},
                         )
              ],
             style={"padding": "10px"},
         ),
     ],
-    style={"backgroundColor": "#333333", "font-family": "Exo-ExtraLight"},
+    style={"backgroundColor": "#333333", "font-family": font_style2},
 )
 
 
@@ -194,7 +196,7 @@ def update_chart(selected_types, selected_owners):
 
     # Update the chart styling
     fig.update_layout(
-        font={"color": "white", "family": "Exo-ExtraLight"},
+        font={"color": "white", "family": font_style2},
         plot_bgcolor="#444444",
         paper_bgcolor="#444444",
     )
